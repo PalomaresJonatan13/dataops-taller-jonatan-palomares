@@ -1,0 +1,12 @@
+# virtual environment and secrets
+env/
+.env
+venv/
+
+# large files
+*.csv
+*.db
+data/
+
+# jupyter notebook checkpoints
+.ipynb-checkpoints/
