@@ -10,3 +10,10 @@ data/
 
 # jupyter notebook checkpoints
 .ipynb-checkpoints/
+
+# cache
+.ruff_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
