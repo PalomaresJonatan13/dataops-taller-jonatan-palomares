@@ -27,12 +27,12 @@ for _ in range(n_records):
         records.append(random.choice(records))
     else:
         records.append((
-            fake.random_element(elements = OrderedDict([(fecha, 0.99), (None, 0.01)])),
-            fake.random_element(elements = OrderedDict([(producto, 0.99), (None, 0.01)])),
-            fake.random_element(elements = OrderedDict([(categoria, 0.99), (None, 0.01)])),
-            fake.random_element(elements = OrderedDict([(cantidad, 0.99), (None, 0.01)])),
-            fake.random_element(elements = OrderedDict([(precio_unitario, 0.99), (None, 0.01)])),
-            fake.random_element(elements = OrderedDict([(cliente_id, 0.99), (None, 0.01)]))
+            fecha,
+            producto,
+            categoria,
+            fake.random_element(elements = OrderedDict([(cantidad, 0.97), (None, 0.03)])),
+            fake.random_element(elements = OrderedDict([(precio_unitario, 0.97), (None, 0.03)])),
+            cliente_id
         ))
         
 
@@ -44,15 +44,17 @@ cursor = connection.cursor()
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS ventas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    fecha TEXT,
-    producto TEXT,
-    categoria TEXT,
+    fecha TEXT NOT NULL,
+    producto TEXT NOT NULL,
+    categoria TEXT NOT NULL,
     cantidad INTEGER,
     precio_unitario REAL,
-    cliente_id INTEGER
+    cliente_id INTEGER NOT NULL
 )
 ''')
 cursor.executemany("INSERT INTO ventas (fecha, producto, categoria, cantidad, precio_unitario, cliente_id) VALUES (?, ?, ?, ?, ?, ?)", records)
+
+print(cursor.fetchone())
 
 connection.commit()
 connection.close()
