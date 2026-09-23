@@ -1,6 +1,10 @@
-import pandas as pd
+from exceptions.exceptions import WrongDBColumnsException
+
 import numpy as np
+import pandas as pd
 import sqlite3
+
+
 
 expected_columns = np.array(["fecha", "producto", "categoria", "cantidad", "precio_unitario", "cliente_id"])
 
@@ -14,6 +18,6 @@ def extract_data(db_path:str) -> pd.DataFrame:
     df = pd.DataFrame(rows, columns=columns)
 
     if np.array_equal(columns, expected_columns):
-        raise Exception(f"Columns in the 'ventas' table are not the expected ones. Received: {columns}. Expected: {expected_columns}")
+        raise WrongDBColumnsException(columns, expected_columns)
 
     return df
