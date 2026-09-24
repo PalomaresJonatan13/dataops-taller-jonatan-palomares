@@ -5,7 +5,7 @@ import pandas as pd
 
 
 
-expected_columns = np.array(["fecha", "producto", "categoria", "cantidad", "precio_unitario", "cliente_id"])
+expected_columns = np.array(["id", "fecha", "producto", "categoria", "cantidad", "precio_unitario", "cliente_id"])
 
 def check_columns_ventas(df:pd.DataFrame) -> None:
     if not np.array_like(df.columns, expected_columns):
