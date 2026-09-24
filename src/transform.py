@@ -26,7 +26,6 @@ def clean_data(df:pd.DataFrame) -> pd.DataFrame:
 
 
 def calculate_metrics(df:pd.DataFrame) -> pd.DataFrame:
-    check_subset_columns_ventas(df)
     df_copy = clean_data(df)
 
     # add 'vental_total'
@@ -40,7 +39,6 @@ def calculate_metrics(df:pd.DataFrame) -> pd.DataFrame:
 
 
 def aggregate_sales(df:pd.DataFrame) -> pd.DataFrame:
-    check_subset_columns_ventas(df)
     df_copy = calculate_metrics(df)
 
     # group by 'categoria' and 'mes' and calculate the sum of 'venta_total'
