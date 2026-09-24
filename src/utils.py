@@ -5,8 +5,8 @@ import pandas as pd
 
 
 
-expected_columns = np.array(["id", "fecha", "producto", "categoria", "cantidad", "precio_unitario", "cliente_id"])
+expected_columns = ["id", "fecha", "producto", "categoria", "cantidad", "precio_unitario", "cliente_id"]
 
-def check_columns_ventas(df:pd.DataFrame) -> None:
-    if not np.array_like(df.columns, expected_columns):
+def check_subset_columns_ventas(df:pd.DataFrame) -> None:
+    if not set(expected_columns).issubset(df.columns):
         raise WrongDBColumnsException(df.columns, expected_columns)

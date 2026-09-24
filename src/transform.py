@@ -1,4 +1,4 @@
-from utils import check_columns_ventas
+from utils import check_subset_columns_ventas
 
 import numpy as np
 import pandas as pd
@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def clean_data(df:pd.DataFrame) -> pd.DataFrame:
-    check_columns_ventas(df)
+    check_subset_columns_ventas(df)
 
     # drop duplicates
     df_copy = df.drop_duplicates(subset=df.columns[df.columns != "id"])

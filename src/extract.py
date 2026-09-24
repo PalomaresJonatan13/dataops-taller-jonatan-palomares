@@ -1,4 +1,4 @@
-from utils import check_columns_ventas
+from utils import check_subset_columns_ventas
 
 import numpy as np
 import pandas as pd
@@ -16,6 +16,6 @@ def extract_data(db_path:str) -> pd.DataFrame:
     columns = [description[0] for description in cursor.description]
     df = pd.DataFrame(rows, columns=columns)
 
-    check_columns_ventas(df)
+    check_subset_columns_ventas(df)
 
     return df
