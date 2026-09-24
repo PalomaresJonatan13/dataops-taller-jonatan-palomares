@@ -26,7 +26,18 @@ def clean_data(df:pd.DataFrame) -> pd.DataFrame:
 
 
 def calculate_metrics(df:pd.DataFrame) -> pd.DataFrame:
-    pass
+    check_subset_columns_ventas(df)
+    df_copy = clean_data(df)
+
+    # add 'vental_total'
+    df_copy['venta_total'] = df_copy['cantidad'] * df_copy['precio_unitario']
+
+    # add 'mes'
+    df_copy['mes'] = df_copy['fecha'].dt.month
+
+    return df_copy
+
+
 
 
 def aggegate_sales(df:pd.DataFrame) -> pd.DataFrame:
