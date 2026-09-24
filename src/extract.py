@@ -1,4 +1,4 @@
-from exceptions.exceptions import WrongDBColumnsException
+from utils import check_columns_ventas
 
 import numpy as np
 import pandas as pd
@@ -17,7 +17,6 @@ def extract_data(db_path:str) -> pd.DataFrame:
     columns = [description[0] for description in cursor.description]
     df = pd.DataFrame(rows, columns=columns)
 
-    if np.array_equal(columns, expected_columns):
-        raise WrongDBColumnsException(columns, expected_columns)
+    check_columns_ventas(df)
 
     return df
