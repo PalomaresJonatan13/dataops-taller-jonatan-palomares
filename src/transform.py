@@ -39,6 +39,11 @@ def calculate_metrics(df:pd.DataFrame) -> pd.DataFrame:
 
 
 
+def aggregate_sales(df:pd.DataFrame) -> pd.DataFrame:
+    check_subset_columns_ventas(df)
+    df_copy = calculate_metrics(df)
 
-def aggegate_sales(df:pd.DataFrame) -> pd.DataFrame:
-    pass
+    # group by 'categoria' and 'mes' and calculate the sum of 'venta_total'
+    aggregate_sales_df = df_copy.groupby(['categoria', 'mes'])['venta_total'].sum().reset_index()
+
+    return aggregate_sales_df
