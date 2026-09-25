@@ -1,5 +1,4 @@
 from exceptions.exceptions import WrongDBColumnsException
-from transform import aggregate_sales
 
 from pathlib import Path
 
@@ -15,9 +14,6 @@ def check_subset_columns_ventas(df:pd.DataFrame) -> None:
 
 
 def save_to_csv(df:pd.DataFrame, path:str|Path) -> None:
-    # get aggregated sales
-    aggregated_sales_df = aggregate_sales(df)
-
     # save to csv
     path = Path(path)
-    aggregated_sales_df.to_csv(path, index=False)
+    df.to_csv(path, index=False)
