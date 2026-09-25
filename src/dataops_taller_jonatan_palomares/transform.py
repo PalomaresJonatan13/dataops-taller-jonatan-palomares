@@ -1,11 +1,12 @@
-from dataops_taller_jonatan_palomares.utils import check_subset_columns_ventas
+"""Clean sales data, calculate metrics, and aggregate results."""
 
-import numpy as np
 import pandas as pd
 
+from dataops_taller_jonatan_palomares.utils import check_subset_columns_ventas
 
 
 def clean_data(df:pd.DataFrame) -> pd.DataFrame:
+    """Remove duplicate sales, fill missing values and change fecha to datetime."""
     check_subset_columns_ventas(df)
 
     # drop duplicates
@@ -26,6 +27,7 @@ def clean_data(df:pd.DataFrame) -> pd.DataFrame:
 
 
 def calculate_metrics(df:pd.DataFrame) -> pd.DataFrame:
+    """Add total sales and calendar month columns."""
     df_copy = clean_data(df)
 
     # add 'vental_total'
@@ -39,6 +41,7 @@ def calculate_metrics(df:pd.DataFrame) -> pd.DataFrame:
 
 
 def aggregate_sales(df:pd.DataFrame) -> pd.DataFrame:
+    """Sum total sales by category and month."""
     df_copy = calculate_metrics(df)
 
     # group by 'categoria' and 'mes' and calculate the sum of 'venta_total'

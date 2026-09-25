@@ -1,3 +1,5 @@
+"""Unit tests for sales data transformations."""
+
 import pytest
 import pandas as pd
 
@@ -7,6 +9,7 @@ import dataops_taller_jonatan_palomares.transform as tf
 
 @pytest.fixture
 def df():
+	"""Build sample sales data for transformation tests."""
 	return pd.DataFrame({
         "id": [1, 2, 3, 4, 5, 6],
         "fecha": ["2024-01-05", "2024-01-10", "2024-02-02", "2024-01-05", "2024-02-15", "2024-02-20"],
@@ -19,6 +22,7 @@ def df():
 
 
 def test_clean_data_remove_duplicates(df):
+	"""Check duplicate sales are removed while preserving the first row."""
 	cleaned = tf.clean_data(df)
 
 	assert len(cleaned) == 5
@@ -26,6 +30,7 @@ def test_clean_data_remove_duplicates(df):
 
 
 def test_clean_data_fill_missing_values(df):
+	"""Check missing quantities and prices are filled as expected."""
 	cleaned = tf.clean_data(df).set_index("id")
 
 	assert cleaned.loc[2, "cantidad"] == 0
@@ -35,6 +40,7 @@ def test_clean_data_fill_missing_values(df):
 
 
 def test_calculate_metrics_calculate_total_sales(df):
+	"""Check calculated total sales for each cleaned record."""
 	metrics = tf.calculate_metrics(df).set_index("id")
 
 	assert metrics["venta_total"].to_dict() == pytest.approx(
@@ -43,6 +49,7 @@ def test_calculate_metrics_calculate_total_sales(df):
 
 
 def test_aggregate_sales_group_by_category_and_month(df):
+	"""Check sales totals are grouped by category and month."""
 	aggregated = tf.aggregate_sales(df)
 	actual = {
 		(row.categoria, row.mes): row.venta_total

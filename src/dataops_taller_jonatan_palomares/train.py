@@ -1,17 +1,20 @@
-from dataops_taller_jonatan_palomares.transform import calculate_metrics
+"""Train and persist a sales prediction model."""
 
-import joblib
 from pathlib import Path
 
+import joblib
 import pandas as pd
 
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+
+from dataops_taller_jonatan_palomares.transform import calculate_metrics
 
 
 
 def train_model(df:pd.DataFrame) -> dict:
+    """Train a linear model and return it with its R-squared score."""
     # create copy with 'mes' and 'venta_total'
     df_copy = calculate_metrics(df)
 

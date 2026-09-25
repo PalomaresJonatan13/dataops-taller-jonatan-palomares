@@ -1,6 +1,8 @@
+"""Create and populate the SQLite ventas database with sample records."""
+
+from collections import OrderedDict
 import random
 from pathlib import Path
-from collections import OrderedDict
 
 import sqlite3
 from faker import Faker
