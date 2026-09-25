@@ -8,9 +8,7 @@ import pandas as pd
 from dataops_taller_jonatan_palomares.utils import check_subset_columns_ventas
 
 
-
-
-def extract_data(db_path: str|Path) -> pd.DataFrame:
+def extract_data(db_path: str | Path) -> pd.DataFrame:
     """Read the ventas table and validate its required columns."""
     connection = sqlite3.connect(db_path)
     cursor = connection.cursor()
