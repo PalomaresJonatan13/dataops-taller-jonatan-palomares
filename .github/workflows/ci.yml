@@ -42,7 +42,7 @@ jobs:
       run: uv run pytest tests/test_data_quality.py -v
 
     - name: Train model and save artifact
-      run: uv run python src/train.py
+      run: uv run python src/dataops_taller_jonatan_palomares/train.py
 
     - name: Upload model artifact
       uses: actions/upload-artifact@v7
