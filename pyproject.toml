@@ -38,3 +38,6 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v"
+
+[tool.black]
+target-version = ["py312"]
