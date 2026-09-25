@@ -54,7 +54,5 @@ CREATE TABLE IF NOT EXISTS ventas (
 ''')
 cursor.executemany("INSERT INTO ventas (fecha, producto, categoria, cantidad, precio_unitario, cliente_id) VALUES (?, ?, ?, ?, ?, ?)", records)
 
-print(cursor.fetchone())
-
 connection.commit()
 connection.close()
