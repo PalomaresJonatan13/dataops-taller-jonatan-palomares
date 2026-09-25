@@ -1,4 +1,4 @@
-from utils import check_subset_columns_ventas
+from dataops_taller_jonatan_palomares.utils import check_subset_columns_ventas
 
 from pathlib import Path
 

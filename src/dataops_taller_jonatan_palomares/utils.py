@@ -1,4 +1,4 @@
-from exceptions.exceptions import WrongDBColumnsException
+from dataops_taller_jonatan_palomares.exceptions.exceptions import WrongDBColumnsException
 
 from pathlib import Path
 

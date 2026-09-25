@@ -1,4 +1,4 @@
-from transform import calculate_metrics
+from dataops_taller_jonatan_palomares.transform import calculate_metrics
 
 import joblib
 from pathlib import Path
