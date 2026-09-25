@@ -1,5 +1,7 @@
 from utils import check_subset_columns_ventas
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import sqlite3
@@ -7,7 +9,7 @@ import sqlite3
 
 
 
-def extract_data(db_path:str) -> pd.DataFrame:
+def extract_data(db_path: str|Path) -> pd.DataFrame:
     connection = sqlite3.connect(db_path)
     cursor = connection.cursor()
 
