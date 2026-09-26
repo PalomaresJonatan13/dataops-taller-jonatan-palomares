@@ -1,0 +1,2 @@
+ALTER TABLE ventas
+ADD COLUMN descuento REAL;
