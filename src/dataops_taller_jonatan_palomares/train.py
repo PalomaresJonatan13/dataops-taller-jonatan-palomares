@@ -33,7 +33,7 @@ def train_model(df: pd.DataFrame) -> dict:
     r2 = r2_score(y_test, y_pred)
 
     # save model in models/model.pkl
-    BASE_DIR = Path(__file__).resolve().parent.parent
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
     MODEL_PATH = BASE_DIR / "models" / "model.pkl"
     MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(model, MODEL_PATH)
