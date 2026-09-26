@@ -6,7 +6,8 @@ venv/
 # large files
 *.csv
 *.db
-data/
+data/*
+!data/*.dvc
 
 # jupyter notebook checkpoints
 .ipynb-checkpoints/
