@@ -27,6 +27,7 @@ build-backend = "uv_build"
 dev = [
     "bandit>=1.9.4",
     "black>=26.5.1",
+    "dvc>=3.67.1",
     "ipykernel>=7.3.0",
     "jupyterlab>=4.6.4",
     "pylint>=4.0.9",
