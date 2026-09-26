@@ -1,5 +1,9 @@
-import random
+"""Create and populate the SQLite ventas database with sample records."""
+
 from collections import OrderedDict
+import random
+from pathlib import Path
+
 import sqlite3
 from faker import Faker
 
@@ -38,7 +42,10 @@ for _ in range(n_records):
 
 
 # Creation and population of the 'ventas' table
-connection = sqlite3.connect("data/database.db")
+DB_PATH = Path("data/database.db")
+DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+connection = sqlite3.connect(DB_PATH)
 cursor = connection.cursor()
 
 cursor.execute('''
